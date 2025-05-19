@@ -1,12 +1,13 @@
 from src.reddit_scraper import Scraper
 from src.sentiment_analysis import SentimentAnalyzer
 def main():
-    scraper = Scraper('Politics', 'Biden')
+    scraper = Scraper('Sports', 'Lebron')
     scraper.scrape()
     scraper.batchandStore()
-    comments = scraper.comments
+    comments = scraper.getComments()
 
     analyzer = SentimentAnalyzer(comments)
-    print(analyzer.analyze())
+    analyzer.analyze()
+    print(analyzer.getScores())
 if __name__ == "__main__":
     main()
